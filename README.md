@@ -1,2 +1,2 @@
 # microservice-auth-data
-Database init and kubernetes setup
+Database schema and kubernetes setup
