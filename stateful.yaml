@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+ name: auth-data
+spec:
+  serviceName: "auth-data-service"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        role: auth-data
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+        - name: auth-db-container
+          image: mongo
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: auth-storage
+              mountPath: /data/db
+  volumeClaimTemplates:
+  - metadata:
+      name: auth-storage
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "local-storage"
+      resources:
+        requests:
+          storage: 50Mi
