@@ -2,14 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name: microservice-auth-data
-  namespace: ${NAMESPACE@microservice-config}
+  namespace: '${NAMESPACE@microservice-config}'
   labels:
     moduleid: microservice-auth-data
-    version: 1.70.0-master
+    version: 1.70.1-auth-stateful-prod
 spec:
   ports:
-  - port: 27017
-    targetPort: 27017
+    -
+      port: 27017
+      targetPort: 27017
   clusterIP: None
   selector:
     role: microservice-auth-data-set
