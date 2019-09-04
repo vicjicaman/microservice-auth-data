@@ -3,6 +3,9 @@ kind: Service
 metadata:
   name: microservice-auth-data
   namespace: ${NAMESPACE@microservice-config}
+  labels:
+    moduleid: microservice-auth-data
+    version: 1.70.0-master
 spec:
   ports:
   - port: 27017
