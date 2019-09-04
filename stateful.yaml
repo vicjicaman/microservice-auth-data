@@ -1,11 +1,11 @@
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
- name: microservice-auth-data-set
- namespace: ${NAMESPACE@microservice-config}
- labels:
-   moduleid: microservice-auth-data
-   version: 1.70.0-master
+  name: microservice-auth-data-set
+  namespace: '${NAMESPACE@microservice-config}'
+  labels:
+    moduleid: microservice-auth-data
+    version: 1.70.1-auth-stateful-prod
 spec:
   serviceName: microservice-auth-data
   replicas: 1
@@ -16,10 +16,13 @@ spec:
     spec:
       terminationGracePeriodSeconds: 10
       containers:
-        - name: data
-          image: mongo:latest
+        -
+          name: data
+          image: 'mongo:latest'
           ports:
-            - containerPort: 27017
+            -
+              containerPort: 27017
           volumeMounts:
-            - name: storage
+            -
+              name: storage
               mountPath: /data/db
