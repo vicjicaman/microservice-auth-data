@@ -1,0 +1,44 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: microservice-auth-data-set
+  namespace: '${NAMESPACE@microservice-config}'
+  labels:
+    moduleid: microservice-auth-data
+    version: 1.70.0-master
+spec:
+  serviceName: microservice-auth-data
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        moduleid: microservice-auth-data
+        version: 1.70.0-master
+        role: microservice-auth-data-set
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+        -
+          name: data
+          image: 'mongo:latest'
+          command:
+            - mongod
+            - '--bind_ip_all'
+          ports:
+            -
+              containerPort: 27017
+          volumeMounts:
+            -
+              name: microservice-auth-storage
+              mountPath: /data/db
+  volumeClaimTemplates:
+    -
+      metadata:
+        name: microservice-auth-storage
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: local-storage
+        resources:
+          requests:
+            storage: 1Gi

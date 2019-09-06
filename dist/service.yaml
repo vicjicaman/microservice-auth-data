@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservice-auth-data
+  namespace: 'microservices-namespace'
+  labels:
+    moduleid: microservice-auth-data
+    version: 1.70.0-master
+spec:
+  ports:
+    -
+      port: 27017
+      targetPort: 27017
+  selector:
+    role: microservice-auth-data-set
