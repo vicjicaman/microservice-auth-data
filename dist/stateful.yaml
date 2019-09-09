@@ -1,20 +1,20 @@
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
-  name: microservice-auth-data-set
-  namespace: 'microservices-namespace'
+  name: auth-data-set
+  namespace: microservices-namespace
   labels:
     moduleid: microservice-auth-data
     version: 1.70.0-master
 spec:
-  serviceName: microservice-auth-data
+  serviceName: auth-data-service
   replicas: 1
   template:
     metadata:
       labels:
         moduleid: microservice-auth-data
         version: 1.70.0-master
-        role: microservice-auth-data-set
+        role: auth-data-set
     spec:
       terminationGracePeriodSeconds: 10
       containers:
