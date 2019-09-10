@@ -7,9 +7,10 @@ metadata:
     moduleid: microservice-auth-data
     version: 1.70.0-master
 spec:
+  clusterIP: None
   ports:
     -
       port: ${INTERNAL_PORT_DATA@microservice-auth-config}
       targetPort: ${INTERNAL_PORT_DATA@microservice-auth-config}
   selector:
-    role: ${STATEFUL_DATA@microservice-auth-config}
+    app: ${STATEFUL_DATA@microservice-auth-config}

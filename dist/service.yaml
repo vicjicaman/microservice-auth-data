@@ -7,9 +7,10 @@ metadata:
     moduleid: microservice-auth-data
     version: 1.70.0-master
 spec:
+  clusterIP: None
   ports:
     -
       port: 27017
       targetPort: 27017
   selector:
-    role: auth-data-set
+    app: auth-data-set
