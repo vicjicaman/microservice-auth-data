@@ -5,7 +5,7 @@ metadata:
   namespace: microservices-namespace
   labels:
     moduleid: microservice-auth-data
-    version: 1.70.1-master
+    version: 1.70.0-auth-base-cache-data-prod
 spec:
   serviceName: auth-data-service
   selector:
@@ -16,7 +16,7 @@ spec:
     metadata:
       labels:
         moduleid: microservice-auth-data
-        version: 1.70.1-master
+        version: 1.70.0-auth-base-cache-data-prod
         app: auth-data-set
     spec:
       terminationGracePeriodSeconds: 10
