@@ -1,23 +1,23 @@
 apiVersion: apps/v1beta2
 kind: StatefulSet
 metadata:
-  name: ${STATEFUL_DATA@microservice-auth-config}
-  namespace: ${NAMESPACE@microservice-config}
+  name: '${STATEFUL_DATA@microservice-auth-config}'
+  namespace: '${NAMESPACE@microservice-config}'
   labels:
     moduleid: microservice-auth-data
-    version: 1.70.0-master
+    version: 1.70.0-dev-auth-service-prod
 spec:
-  serviceName: ${SERVICE_DATA@microservice-auth-config}
+  serviceName: '${SERVICE_DATA@microservice-auth-config}'
   selector:
     matchLabels:
-      app: ${STATEFUL_DATA@microservice-auth-config}
+      app: '${STATEFUL_DATA@microservice-auth-config}'
   replicas: 1
   template:
     metadata:
       labels:
         moduleid: microservice-auth-data
-        version: 1.70.0-master
-        app: ${STATEFUL_DATA@microservice-auth-config}
+        version: 1.70.0-dev-auth-service-prod
+        app: '${STATEFUL_DATA@microservice-auth-config}'
     spec:
       terminationGracePeriodSeconds: 10
       containers:
@@ -29,7 +29,7 @@ spec:
             - '--bind_ip_all'
           ports:
             -
-              containerPort: ${INTERNAL_PORT_DATA@microservice-auth-config}
+              containerPort: '${INTERNAL_PORT_DATA@microservice-auth-config}'
           volumeMounts:
             -
               name: microservice-auth-data-storage
