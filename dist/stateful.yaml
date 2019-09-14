@@ -1,20 +1,23 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1beta2
 kind: StatefulSet
 metadata:
-  name: microservice-auth-data-set
+  name: 'auth-data-set'
   namespace: 'microservices-namespace'
   labels:
     moduleid: microservice-auth-data
-    version: 1.70.0-master
+    version: 1.70.1-master
 spec:
-  serviceName: microservice-auth-data
+  serviceName: 'auth-data-service'
+  selector:
+    matchLabels:
+      app: 'auth-data-set'
   replicas: 1
   template:
     metadata:
       labels:
         moduleid: microservice-auth-data
-        version: 1.70.0-master
-        role: microservice-auth-data-set
+        version: 1.70.1-master
+        app: 'auth-data-set'
     spec:
       terminationGracePeriodSeconds: 10
       containers:
@@ -26,15 +29,15 @@ spec:
             - '--bind_ip_all'
           ports:
             -
-              containerPort: 27017
+              containerPort: '27017'
           volumeMounts:
             -
-              name: microservice-auth-storage
+              name: microservice-auth-data-storage
               mountPath: /data/db
   volumeClaimTemplates:
     -
       metadata:
-        name: microservice-auth-storage
+        name: microservice-auth-data-storage
       spec:
         accessModes:
           - ReadWriteOnce
