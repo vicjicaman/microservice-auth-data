@@ -1,23 +1,23 @@
 apiVersion: apps/v1beta2
 kind: StatefulSet
 metadata:
-  name: auth-data-set
-  namespace: microservices-namespace
+  name: 'auth-data-set'
+  namespace: 'microservices-namespace'
   labels:
     moduleid: microservice-auth-data
-    version: 1.70.0-master
+    version: 1.70.0-dev-auth-service-prod
 spec:
-  serviceName: auth-data-service
+  serviceName: 'auth-data-service'
   selector:
     matchLabels:
-      app: auth-data-set
+      app: 'auth-data-set'
   replicas: 1
   template:
     metadata:
       labels:
         moduleid: microservice-auth-data
-        version: 1.70.0-master
-        app: auth-data-set
+        version: 1.70.0-dev-auth-service-prod
+        app: 'auth-data-set'
     spec:
       terminationGracePeriodSeconds: 10
       containers:
@@ -29,7 +29,7 @@ spec:
             - '--bind_ip_all'
           ports:
             -
-              containerPort: 27017
+              containerPort: '27017'
           volumeMounts:
             -
               name: microservice-auth-data-storage
