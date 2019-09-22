@@ -5,7 +5,7 @@ metadata:
   namespace: '${NAMESPACE@microservice-config}'
   labels:
     moduleid: microservice-auth-data
-    version: 1.70.4-auth-config-prod
+    version: 1.70.3-master
 spec:
   serviceName: '${SERVICE@microservice-auth-data-config}'
   selector:
@@ -16,7 +16,7 @@ spec:
     metadata:
       labels:
         moduleid: microservice-auth-data
-        version: 1.70.4-auth-config-prod
+        version: 1.70.3-master
         app: '${STATEFUL@microservice-auth-data-config}'
     spec:
       terminationGracePeriodSeconds: 10
