@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: '${STATEFUL@microservice-auth-data-config}'
@@ -23,7 +23,7 @@ spec:
       containers:
         -
           name: data
-          image: 'mongo:latest'
+          image: 'mongo:4.2.0'
           command:
             - mongod
             - '--bind_ip_all'
