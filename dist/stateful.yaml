@@ -1,11 +1,11 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: auth-data-set
   namespace: microservices-namespace
   labels:
     moduleid: microservice-auth-data
-    version: 1.70.3-master
+    version: 1.70.4-master
 spec:
   serviceName: auth-data-service
   selector:
@@ -16,14 +16,14 @@ spec:
     metadata:
       labels:
         moduleid: microservice-auth-data
-        version: 1.70.3-master
+        version: 1.70.4-master
         app: auth-data-set
     spec:
       terminationGracePeriodSeconds: 10
       containers:
         -
           name: data
-          image: 'mongo:latest'
+          image: 'mongo:4.2.0'
           command:
             - mongod
             - '--bind_ip_all'
