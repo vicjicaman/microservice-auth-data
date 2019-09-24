@@ -5,7 +5,7 @@ metadata:
   namespace: microservices-namespace
   labels:
     moduleid: microservice-auth-data
-    version: 1.70.0-data-cache-version-prod
+    version: 1.70.4-master
 spec:
   clusterIP: None
   ports:
